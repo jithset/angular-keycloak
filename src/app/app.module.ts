@@ -4,17 +4,17 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { SettingsComponent } from './components/settings/settings.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { environment } from '../environments/environment';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 const keycloakService = new KeycloakService();
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SettingsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
