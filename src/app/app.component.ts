@@ -7,19 +7,7 @@ import { KeycloakService } from 'keycloak-angular';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  title = 'frontend';
-  userDetails: KeycloakProfile;
   constructor(private keycloakService: KeycloakService) { }
-
-  async ngOnInit() {
-    if (await this.keycloakService.isLoggedIn()) {
-      this.userDetails = await this.keycloakService.loadUserProfile();
-    }
-  }
-
-  async doLogout() {
-    await this.keycloakService.logout();
-  }
 }

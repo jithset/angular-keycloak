@@ -1,14 +1,35 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthGuard } from './auth.guard';
+import { ProfileComponent } from './components/profile/profile.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { EmployeeComponent } from './components/employee/employee.component';
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: '404', component: NotFoundComponent },
-  { path: '**', redirectTo: '404' }
+  {
+    path: '',
+    redirectTo: '/profile',
+    pathMatch: 'full'
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'employees',
+    component: EmployeeComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ["admin"]
+    }
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

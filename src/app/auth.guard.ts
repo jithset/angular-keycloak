@@ -10,12 +10,16 @@ export class AuthGuard extends KeycloakAuthGuard {
 
   isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     return new Promise(async (resolve, reject) => {
-      if (!this.authenticated) {
-        this.keycloakAngular.login();
+      if (!this.authenticated) { // check if authenticated
+        this.keycloakAngular.login(); // go to login
         return;
       }
 
       const requiredRoles = route.data.roles;
+      console.log("roles from token " + this.roles);
+      console.log("roles from user " + requiredRoles);
+
+
       if (!requiredRoles || requiredRoles.length === 0) {
         return resolve(true);
       } else {

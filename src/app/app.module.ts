@@ -3,18 +3,21 @@ import { NgModule, ApplicationRef, DoBootstrap } from '@angular/core';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 import { environment } from '../environments/environment';
+import { ProfileComponent } from './components/profile/profile.component';
+import { SettingsComponent } from './components/settings/settings.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { AuthService } from './services/auth.service';
 
 const keycloakService = new KeycloakService();
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    NotFoundComponent,
-    NavbarComponent
+    ProfileComponent,
+    SettingsComponent,
+    NavbarComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ const keycloakService = new KeycloakService();
     {
       provide: KeycloakService,
       useValue: keycloakService
-    }
+    },
+    AuthService
   ],
   entryComponents: [AppComponent]
 })
